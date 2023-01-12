@@ -26,4 +26,45 @@ const data = [
 
 
 
+// console.log($('.navigation > li'));
+
+// $('.navigation > li').click(function(e){
+//   e.preventDefault();
+//   // console.log($(this));
+//   let index = $(this).index();
+
+//   console.log(index);
+
+
+//   $('.navigation > li').removeClass('is-active');
+  
+//   $(this).addClass('is-active')
+
+//   $('.visual img').attr({
+//     'src' : `./assets/part01/${data[index].src}`,
+//     'alt' : data[index].alt
+//   })
+// })
+
+
+
+
+
+$('.navigation').on('click','li',function(e){
+  e.preventDefault();
+
+  let index = $(this).attr('data-index');
+  
+
+  $('.navigation > li').removeClass('is-active');
+  
+  $(this).addClass('is-active')
+  
+  $('.visual img').attr({
+    'src' : `./assets/part01/${data[index-1].src}`,
+    'alt' : data[index].alt
+  })
+
+  console.log($(index));
+})
 
