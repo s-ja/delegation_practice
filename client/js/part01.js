@@ -26,9 +26,63 @@ const data = [
 
 
 const navigation = getNode('.navigation');
+// const list = getNodes('.navigation > li')
 
-console.log(navigation);
 
+function makeArray(arrayLike){
+  return Array.from(arrayLike)
+}
+
+
+// console.log(navigation);
+
+function handler(e) {
+  
+  let target = e.target.closest('li');
+  let list = makeArray(navigation.children)
+  // let arr = makeArray(list)
+
+
+  if(!target) return;
+
+  // console.log(target);
+
+  // Array.from(list)
+  // let arr = [... list]
+  // Array.prototype.slice.call(list)
+  
+  
+  // console.log(navigation.children);
+  // console.log(list);
+  
+  list.forEach(item =>
+    // console.log(item);
+    removeClass(item,'is-active')
+  );
+  
+  addClass(target,'is-active')
+  
+}
+
+navigation.addEventListener('click',handler);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const li_1 = getNode('.navigation > li:nth-child(1)')
+// const li_2 = getNode('.navigation > li:nth-child(2)')
+
+// li_1.addEventListener('click',(e)=>{
+// })
 
 
 
