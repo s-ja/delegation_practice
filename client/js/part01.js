@@ -27,9 +27,13 @@ const data = [
 
 const navigation = getNode('.navigation');
 // const list = getNodes('.navigation > li')
+const visualImage = getNode('.visual img');
 
 
 function makeArray(arrayLike){
+  // Array.from(list)
+  // let arr = [... list]
+  // Array.prototype.slice.call(list)
   return Array.from(arrayLike)
 }
 
@@ -39,11 +43,17 @@ function makeArray(arrayLike){
 function handler(e) {
   
   let target = e.target.closest('li');
+
+  if(!target) return;
+
+  
   let list = makeArray(navigation.children)
   // let arr = makeArray(list)
 
+  let index = attr(target,'data-index')
 
-  if(!target) return;
+
+
 
   // console.log(target);
 
@@ -61,6 +71,19 @@ function handler(e) {
   );
   
   addClass(target,'is-active')
+  // let dataList = target.getAttribute('data-index')
+  // console.log(dataList);
+
+  // console.log(target.dataset.index);
+  // console.log(attr(target,'data-index'));
+  console.log(index);
+  console.log(visualImage);
+  console.log(attr(visualImage, 'src'));
+
+  // attr(visualImage, 'src', `./assets/part01/visual${index}.jpg`)
+  attr(visualImage, 'src', `./assets/part01/${data[index-1].src}`)
+  attr(visualImage, 'alt', data[index-1].alt)
+  
   
 }
 
